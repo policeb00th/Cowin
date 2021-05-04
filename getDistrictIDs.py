@@ -5,8 +5,11 @@ import json
 Edit State ID
 '''
 StateID=9
-url = f"https://cdn-api.co-vin.in/api/v2/admin/location/districts/{StateID}"
 
+
+
+
+url = f"https://cdn-api.co-vin.in/api/v2/admin/location/districts/{StateID}"
 payload={}
 headers = {}
 

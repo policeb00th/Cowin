@@ -9,7 +9,9 @@ Stay safe!!
 
 ## **How it works?**
 
-So the program gets the vaccines available in an entire district using a district key- which depends on the state. You can get the your district key by running getDistrictIDs.py, and replace the id with your state ID from the table given below
+So the program gets the vaccines available in an entire district using a district key- which depends on the state. 
+
+You can get the your district key by running **getDistrictIDs.py**, and **replace** the value of StateID with your state ID from the table given below.
 
 | State name                  | State id |
 | --------------------------- | -------- |
