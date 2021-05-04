@@ -54,9 +54,13 @@ You can get the your district key by running **getDistrictIDs.py**, and **replac
 | West Bengal                 | 36       |
 
 
+For example, if I my district lies in Delhi, I will run getDistrictIDs.py with the StateID value as 9
 Upon running, you will recieve a table of the format below
 
 ```
+$ python getDistrictIDs.py
+
+
 Central Delhi                    141
 East Delhi                       145
 New Delhi                        140
@@ -75,10 +79,13 @@ Rum Main.py to get vaccine details in your district till the next five weeks.
 
 ###Some variables you can edit to get different results in Main.py
 
-
-* **num_weeks**: looks through certain number of weeks forward, minimum value is 1
-* **district_id**: enter the district_id of the district you want to get vaccination details of  
-* **select_age_flag**:flag to displays center list based on all ages or specific age group, select 0 for all vaccine slots, 1 for selected age vaccine slots
-* **age**: enter minimum age of vaccination for the slot. Enter 18 for centers with vaccination for 18-44 years old, and 45 for 45+ years old.
+| Variable name    | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| * **num_weeks**: | looks through certain number of weeks forward, |
+ minimum value is 1. Default is 5.                                                       |
+| * **district_id**: | enter the district_id of the district you want to get vaccination details of |
+| *----------------: | f--------------------------------------------------------------------------s |
+| * **age**:         | enter minimum age of vaccination for the slot.                               |
+ Enter 18 for centers with vaccination for 18-44 years old, and 45 for 45+ years old. |
 
 
