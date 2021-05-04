@@ -59,7 +59,7 @@ You can get the your district key by running **getDistrictIDs.py**, and **replac
 | West Bengal                 | 36       |
 
 
-For example, if my district lies in Delhi, I will run getDistrictIDs.py with the StateID value as 9
+### For example, if my district lies in Delhi, I will run getDistrictIDs.py with the StateID value as 9
 Upon running, you will recieve a table of the format below
 
 ```
