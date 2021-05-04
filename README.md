@@ -10,6 +10,8 @@ Stay safe!!
 ## **How it works?**
 
 So the program gets the vaccines available in an entire district using a district key- which depends on the state. 
+The program only shows centers with available vaccines for the next 5 weeks, for 18+ population (18-44) and filters based on district.
+More functionality has not been added to keep it simple, however, if needed, I will add it. Kindly reach out to me for the same
 
 You can get the your district key by running **getDistrictIDs.py**, and **replace** the value of StateID with your state ID from the table given below.
 
@@ -54,7 +56,7 @@ You can get the your district key by running **getDistrictIDs.py**, and **replac
 | West Bengal                 | 36       |
 
 
-For example, if I my district lies in Delhi, I will run getDistrictIDs.py with the StateID value as 9
+For example, if my district lies in Delhi, I will run getDistrictIDs.py with the StateID value as 9
 Upon running, you will recieve a table of the format below
 
 ```
@@ -74,7 +76,7 @@ South West Delhi                 150
 West Delhi                       142
 ```
 
-Now take the ID to your respective district, and edit it in the Main.py code to get vaccines for your district.
+Now take the ID to your respective district, and edit line 13 in Main.py to get vaccines for your district.
 Run Main.py to get vaccine details in your district till the next five weeks.
 
 ### **Some variables you can edit to get different results in Main.py**
