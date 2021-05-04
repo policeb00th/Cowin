@@ -7,6 +7,10 @@ Please feel free to clone this code and use for your own friends and family
 
 Stay safe!!
 
+## **Requirements**
+* One python developer who works in Python 3.x. If you can't find one, feel free to contact me.
+* A working internet connection
+
 ## **How it works?**
 
 So the program gets the vaccines available in an entire district using a district key- which depends on the state. 
