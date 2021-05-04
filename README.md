@@ -75,15 +75,15 @@ West Delhi                       142
 ```
 
 Now take the ID to your respective district, and edit it in the Main.py code to get vaccines for your district.
-Rum Main.py to get vaccine details in your district till the next five weeks.
+Run Main.py to get vaccine details in your district till the next five weeks.
 
 ### **Some variables you can edit to get different results in Main.py**
 
 | Variable name | Description |
 | ------------- | ----------- |
-|num_weeks| looks through certain number of weeks forward, minimum value is 1. Default is 5.|
-|district_id| enter the district_id of the district you want to get vaccination details of  |
-|select_age_flag|flag to displays center list based on all ages or specific age group, select 0 for all vaccine slots, 1 for selected age vaccine slots|
-|age| enter minimum age of vaccination for the slot. Enter 18 for centers with vaccination for 18-44 years old, and 45 for 45+ years old.|
+|num_weeks| Looks through certain number of weeks forward, minimum value is 1. Default is 5.|
+|district_id| Enter the district_id of the district you want to get vaccination details of. Default is Gurgaon (188) |
+|select_age_flag|Flag to displays center list based on all ages or specific age group, select 0 for all vaccine slots, 1 for selected age vaccine slots. Default is on|
+|age| Enter minimum age of vaccination for the slot. Enter 18 for centers with vaccination for 18-44 years old, and 45 for 45+ years old. Default gives for 18+ centers|
 
 
