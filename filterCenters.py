@@ -28,3 +28,17 @@ def getAllCentersPaid(response,age):
                     else:
                         dateCenterdict[session["date"]]=[[center["name"],session["vaccine"],session["available_capacity"]]]
     return(dateCenterdict)
+
+def getAllCenters(response,age):
+    response=response.json()
+    listofCenters=[]
+    centers=response["centers"]
+    dateCenterdict={}
+    for center in centers:
+        for session in center["sessions"]:
+            if session["available_capacity"]!=0:
+                if session["date"] in dateCenterdict:
+                    dateCenterdict[session["date"]].append([center["name"],session["vaccine"],session["available_capacity"]])
+                else:
+                    dateCenterdict[session["date"]]=[[center["name"],session["vaccine"],session["available_capacity"]]]
+    return(dateCenterdict)

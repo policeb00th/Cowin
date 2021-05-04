@@ -16,7 +16,7 @@ age= 45              # 18 returns centers with available vaccines for 18-44 year
 if select_age_flag == 1:
 
     print(
-        f"\n\n\n----------------------Paid for minimum Age {age}------------------------------------\n")
+        f"\n\n\n----------------------Paid centers for minimum Age {age}------------------------------\n")
     for i in range(num_weeks):  # searching for 3 weeks
         getDateFormatted = getFormattedDate.getDate(today)
         response = getListofCenters.getListOfCenters(
@@ -24,12 +24,11 @@ if select_age_flag == 1:
         if response.status_code == 200:
             availableDates = filterCenters.getAgeBasedCentersPaid(response, age)
             if availableDates=={}:
-                print(f"None showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
+                print(f"\tNone showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
             else:
                 outputPrettifier.prettyprint(availableDates)
         else:
-            print(
-                f"Error accessing data from Cowin for date{getDateFormatted}, try again\n")
+            print(f"\tError accessing data from Cowin for date{getDateFormatted}, try again\n")
         today = today+timedelta(weeks=1)
 
 
@@ -44,10 +43,9 @@ else:
         if response.status_code == 200:
             availableDates = filterCenters.getAllCentersPaid(response, age)
             if availableDates=={}:
-                print(f"None showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
+                print(f"\tNone showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
             else:
                 outputPrettifier.prettyprint(availableDates)
         else:
-            print(
-                f"Error accessing data from Cowin for date{getDateFormatted}, try again\n")
+            print(f"\tError accessing data from Cowin for date{getDateFormatted}, try again\n")
         today = today+timedelta(weeks=1)
