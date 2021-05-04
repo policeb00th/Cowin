@@ -77,7 +77,7 @@ West Delhi                       142
 Now take the ID to your respective district, and edit it in the Main.py code to get vaccines for your district.
 Rum Main.py to get vaccine details in your district till the next five weeks.
 
-###Some variables you can edit to get different results in Main.py
+### **Some variables you can edit to get different results in Main.py**
 
 | Variable name | Description |
 | ------------- | ----------- |
