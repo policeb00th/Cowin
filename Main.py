@@ -2,7 +2,7 @@ from datetime import date
 import ageFiltered
 today = date.today()
 num_weeks = 5        # number of weeks to search through for
-district_id = 34    # district id of gurgaon-188, south delhi-149,SE Del-144. SW-Del-150
+district_id = 144    # district id of gurgaon-188, south delhi-149,SE Del-144. SW-Del-150
 select_age_flag = 1  # 1 for age based search,0 to search and return for both ages.
 age= 21              # Enter your age
 paid_necessary=0     # returns only paid centers if 1, returns unpaid as well if 0
