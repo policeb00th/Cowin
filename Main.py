@@ -1,51 +1,14 @@
 import requests
 import outputPrettifier
-import time
 from datetime import date
-from datetime import timedelta
-import filterCenters
-import getListofCenters
-import getFormattedDate
-
-
+import ageFiltered
 today = date.today()
 num_weeks = 5        # number of weeks to search through for
-district_id = 150    # district id of gurgaon-188, south delhi-149,SE Del-144. SW-Del-150
-select_age_flag = 1             # 0 for age based search,1 to search and retu for both ages.
+district_id = 144    # district id of gurgaon-188, south delhi-149,SE Del-144. SW-Del-150
+select_age_flag = 1  # 0 for age based search,1 to search and retu for both ages.
 age= 45              # 18 returns centers with available vaccines for 18-44 year olds, 45 returns centers with available vaccines for 45+ year olds
-if select_age_flag == 1:
+paid_necessary=0     # returns only paid centers if 1, returns unpaid as well if 0
+ageFiltered.getPaid(select_age_flag,num_weeks,today,district_id,age)
+if paid_necessary==0:
+    ageFiltered.getUnpaid(select_age_flag,num_weeks,today,district_id,age)
 
-    print(
-        f"\n\n\n----------------------Paid centers for minimum Age {age}------------------------------\n")
-    for i in range(num_weeks):  # searching for 3 weeks
-        getDateFormatted = getFormattedDate.getDate(today)
-        response = getListofCenters.getListOfCenters(
-            district_id, getDateFormatted)
-        if response.status_code == 200:
-            availableDates = filterCenters.getAgeBasedCentersPaid(response, age)
-            if availableDates=={}:
-                print(f"\tNone showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
-            else:
-                outputPrettifier.prettyprint(availableDates)
-        else:
-            print(f"\tError accessing data from Cowin for date{getDateFormatted}, try again\n")
-        today = today+timedelta(weeks=1)
-
-
-
-
-else:
-    print(f"----------------------Paid-> All ages------------------------------------")
-    for i in range(num_weeks):  # searching for 3 weeks
-        getDateFormatted = getFormattedDate.getDate(today)
-        response = getListofCenters.getListOfCenters(
-            district_id, getDateFormatted)
-        if response.status_code == 200:
-            availableDates = filterCenters.getAllCentersPaid(response, age)
-            if availableDates=={}:
-                print(f"\tNone showing from {getDateFormatted} till  {getFormattedDate.getDate(today+timedelta(weeks=1))}\n")            
-            else:
-                outputPrettifier.prettyprint(availableDates)
-        else:
-            print(f"\tError accessing data from Cowin for date{getDateFormatted}, try again\n")
-        today = today+timedelta(weeks=1)
