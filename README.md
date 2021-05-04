@@ -101,3 +101,6 @@ Now you might say that your filter isn't the one above, you can change the value
 |select_age_flag|Flag to displays center list based on all ages or specific age group, select 0 for all vaccine slots, 1 for selected age vaccine slots. Default is 1|
 |paid_necessary| Enter one if only want to see paid centers, else enter 0, default is 0|
 
+
+
+PS- Sometimes it might say "Error accessing data from Cowin. This happens due to the cloudflare protection used by the government for their servers. Just run the file again, it should work. If it doesn't, wait for some time before running again, otherwise feel free to [contact me](https://www.instagram.com/hey_atleast_someone/)
