@@ -14,8 +14,7 @@ Stay safe!!
 ## **How it works?**
 
 So the program gets the vaccines available in an entire district using a district key- which depends on the state. 
-The program only shows centers with available vaccines for the next 5 weeks, for 18+ population (18-44) and filters based on district.
-More functionality has not been added to keep it simple, however, if needed, I will add it. Kindly reach out to me for the same
+
 
 You can get the your district key by running **getDistrictIDs.py**, and **replace** the value of StateID with your state ID from the table given below.
 
@@ -83,13 +82,22 @@ West Delhi                       142
 Now take the ID to your respective district, and edit line 13 in Main.py to get vaccines for your district.
 Run Main.py to get vaccine details in your district till the next five weeks.
 
+## Default values
+* number of weeks to search forward- 5
+* district ID- 144 (South East Delhi)
+* selected age- 21
+* paid necessary- 0
+
+Now you might say that your filter isn't the one above, you can change the values given below to filter centers as per your need
+
+
 ### **Some variables you can edit to get different results in Main.py**
 
 | Variable name | Description |
 | ------------- | ----------- |
 |num_weeks| Looks through certain number of weeks forward, minimum value is 1. Default is 5.|
 |district_id| Enter the district_id of the district you want to get vaccination details of. Default is Gurgaon (188) |
-|age| Enter minimum age of vaccination for the slot. Enter 18 for centers with vaccination for 18-44 years old, and 45 for 45+ years old. Default gives for 18+ centers, works only when select_age_flag is 1|
+|age| Enter age of person to be vaccinated. Works only when select_age_flag is 1|
 |select_age_flag|Flag to displays center list based on all ages or specific age group, select 0 for all vaccine slots, 1 for selected age vaccine slots. Default is 1|
 |paid_necessary| Enter one if only want to see paid centers, else enter 0, default is 0|
 

@@ -6,6 +6,12 @@ import outputPrettifier
 import getFormattedDate
 
 
+def getAgeGroup(age):
+    if age>=45:
+        return 45
+    else:
+        return 18
+
 def getPaid(select_age_flag,num_weeks,today,district_id,age):
     if select_age_flag == 1:
         print(
