@@ -1,6 +1,7 @@
 import pickle
 import re
 import json
+from CONSTANTS import CONSTANTS
 from ageFiltered import getAgeGroup
 regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$' 
 def addEntry():
@@ -85,6 +86,6 @@ def DeleteEmailByDistrict():
 
 
 # addEntry()
-# RenameDistrict()
+RenameDistrict()
 # DeleteDistrict()
 # DeleteEmailByDistrict()
