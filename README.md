@@ -5,6 +5,7 @@ So I created this project because I was tired of logging in via Cowin using an O
 
 Please feel free to clone this code and use for your own friends and family
 
+I'm running it on my localhost and the form to avail the service is [here](https://forms.gle/Qqhp57MD2CMT8Lev8)
 Stay safe!!
 
 ## **Requirements**
