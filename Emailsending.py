@@ -6,11 +6,13 @@ from emailFunctions import sendMail
 import requests
 from datetime import datetime
 from outputPrettifier import prettyreturnAllAge,prettyreturnByAge
+from datetime import timedelta
 from Emailresponsefilter import getAgeBasedCenters,getAllCenters
 mapper=DistrictMapper.getMapper()
 today = date.today()
 num_weeks=5
 
+print(f"program started at time {datetime.now()}\n--------------------------------------")
 for district in mapper:
     below45List={email for (email,details) in mapper[district].items() if details['age']==18 and details['age_based']==1}
     above45List={email for (email,details) in mapper[district].items() if details['age']==45 and details['age_based']==1}
@@ -36,6 +38,7 @@ for district in mapper:
                     above45data['data']+=data
         else:
             print(f"Error getting data from Cowin {district} at time {datetime.now()}\n")
+        today = today+timedelta(weeks=1)
     if bothdata['data']!="":
         sendMail(bothList,bothdata['data'])
         print(f"mail sent for bothList at time {datetime.now()} containing {len(bothList)} recipients for district {district}\n")   
@@ -45,3 +48,4 @@ for district in mapper:
     if above45data['data']!="":
         sendMail(above45List,above45data["data"])
         print(f"mail sent for above45 at time {datetime.now()} containing {len(above45List)} recipients for district {district}\n")               
+print(f"program ended at time {datetime.now()}")

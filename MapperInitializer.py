@@ -5,7 +5,7 @@ a=open(CONSTANTS.path.value+"/map.pkl",'ab')
 mapper = {
     149:{
         'sinha.diptanshu10@gmail.com':{
-            'age_based':1,
+            'age_based':0,
             'age':18,
             'paid_necessary':0
             
@@ -17,7 +17,7 @@ mapper = {
             
         },
         'sinha.diptanshu.vit@gmail.com':{
-            'age_based':0,
+            'age_based':1,
             'paid_necessary':0,
             'age':21
             
