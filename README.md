@@ -117,7 +117,7 @@ PS- Sometimes it might say "Error accessing data from Cowin. This happens due to
 * update your **gmail** address and password in CONSTANTS.PY. Also allow less secure access from [here](https://www.google.com/settings/security/lesssecureapps)
 * Initialize a map file, you can edit the one I've provided in the format, or run it as it is.
 * Once initialized, you can add and remove emails by uncommenting and running the functions in **editMapper.py**, the mapping after each command will be available in MapperLog.txt.
-* Running Emailsending.py will generate the output once. To automate this, run [crontab](https://medium.com/@lalitvyas1994/crontab-cronjob-automation-want-to-run-your-python-script-again-again-like-after-every-10-20-21700a406ddc) for Unix like systems (MacOS and Linux) and [Windows Task Scheduler](https://datatofish.com/python-script-windows-scheduler/) for Windows. Schedule it to run as much time as you'd like
+* Running Emailsending.py will generate the output once. To automate this, run [crontab](https://medium.com/@lalitvyas1994/crontab-cronjob-automation-want-to-run-your-python-script-again-again-like-after-every-10-20-21700a406ddc) for Unix like systems (MacOS and Linux) and [Windows Task Scheduler](https://dev.to/tharindadilshan/running-a-python-script-every-x-minutes-in-windows-10-3nm9) for Windows. Schedule it to run as much time as you'd like
 * The results from the crontab execution will be stored in logs.txt (Sorry Windows peeps, have not checked on windows yet)
 
 ## Schema for mapper
