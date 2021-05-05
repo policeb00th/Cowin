@@ -1,7 +1,8 @@
 import yagmail
 from getPassword import getpwd
 import time
-yag=yagmail.SMTP('sinha.diptanshu10@gmail.com',getpwd())
+email,password=getpwd()
+yag=yagmail.SMTP(email,password)
 
 def sendMail(adresses,data):
     contents = [data]
