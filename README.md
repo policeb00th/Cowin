@@ -104,3 +104,61 @@ Now you might say that your filter isn't the one above, you can change the value
 
 
 PS- Sometimes it might say "Error accessing data from Cowin. This happens due to the cloudflare protection used by the government for their servers. Just run the file again, it should work. If it doesn't, wait for some time before running again, otherwise feel free to [contact me](https://www.instagram.com/hey_atleast_someone/)
+
+# Updates
+
+* Added email services
+
+
+
+
+# running emails 24/7
+* For running email services on your own node, you'll have to install [yagml](https://pypi.org/project/yagmail/) and [tabulate](https://pypi.org/project/tabulate/)
+* update your **gmail** address and password in CONSTANTS.PY. Also allow less secure access from [here](https://www.google.com/settings/security/lesssecureapps)
+* Initialize a map file, you can edit the one I've provided in the format, or run it as it is.
+* Once initialized, you can add and remove emails by uncommenting and running the functions in **editMapper.py**, the mapping after each command will be available in MapperLog.txt.
+* Running Emailsending.py will generate the output once. To automate this, run [crontab](https://medium.com/@lalitvyas1994/crontab-cronjob-automation-want-to-run-your-python-script-again-again-like-after-every-10-20-21700a406ddc) for Unix like systems (MacOS and Linux) and [Windows Task Scheduler](https://datatofish.com/python-script-windows-scheduler/) for Windows. Schedule it to run as much time as you'd like
+* The results from the crontab execution will be stored in logs.txt (Sorry Windows peeps, have not checked on windows yet)
+
+## Schema for mapper
+
+the mapper Schema is given below to understand better
+
+```
+{
+    149:{
+        'sinha.diptanshu10@gmail.com':{
+            'age_based':1,
+            'age':18,
+            'paid_necessary':0
+            
+        },
+        'sinha.diptanshu@hotmail.com':{
+            'age_based':1,
+            'age':45,
+            'paid_necessary':0
+            
+        },
+        'sinha.diptanshu.vit@gmail.com':{
+            'age_based':0,
+            'paid_necessary':0,
+            'age':21
+            
+        }
+    }
+}
+```
+
+the general architecture is 
+```
+{
+    district_id_1:{
+        email1:{ specifications },
+        email2: { specifications }
+    },
+    district_id_2:{
+        email1:{ specifications },
+        email2: { specifications }
+    }
+}
+```

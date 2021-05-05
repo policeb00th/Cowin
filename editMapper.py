@@ -13,7 +13,7 @@ def addEntry():
         else:
             age=getAgeGroup(age_based)
             age_based=1
-        a=open("map.pkl","rb")
+        a=open(CONSTANTS.path.value+"/map.pkl","rb")
         mapper=pickle.load(a)
         a.close()
         if district_id not in mapper:
@@ -21,16 +21,16 @@ def addEntry():
         else:
             mapper[district_id][email]={"age_based":age_based,"age":age,"paid_necessary":0}
         
-        a=open("map.pkl","wb")
+        a=open(CONSTANTS.path.value+"/map.pkl","wb")
         pickle.dump(mapper,a)
         a.close()
-        a=open("MapperLog.txt","a")
+        a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
         a.write(f"\n\nAdded district {district_id}, Email {email} with age {age} and aged_based {age_based}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
 
 
 def RenameDistrict():
     district_id=int(input("Enter old district id: "))
-    a=open("map.pkl","rb")
+    a=open(CONSTANTS.path.value+"/map.pkl","rb")
     mapper=pickle.load(a)
     a.close()
     if district_id not in mapper:
@@ -40,31 +40,31 @@ def RenameDistrict():
         temp=mapper[district_id]
         mapper[new_id]=temp
         del mapper[district_id]
-        a=open("map.pkl","wb")
+        a=open(CONSTANTS.path.value+"/map.pkl","wb")
         pickle.dump(mapper,a)
         a.close()
-        a=open("MapperLog.txt","a")
+        a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
         a.write(f"\n\nChanged district ID from {district_id} to {new_id}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
         
 
 def DeleteDistrict():
     district_id=int(input("Enter district ID to delete: "))
-    a=open("map.pkl","rb")
+    a=open(CONSTANTS.path.value+"/map.pkl","rb")
     mapper=pickle.load(a)
     a.close()
     if district_id not in mapper:
         print("Enter ID not present")
     else:
         del mapper[district_id]
-        a=open("map.pkl","wb")
+        a=open(CONSTANTS.path.value+"/map.pkl","wb")
         pickle.dump(mapper,a)
         a.close()
-        a=open("MapperLog.txt","a")
+        a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
         a.write(f"\n\nDeleted district ID: {district_id}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
 
 def DeleteEmailByDistrict():
     district_id=int(input("Enter district ID : "))
-    a=open("map.pkl","rb")
+    a=open(CONSTANTS.path.value+"/map.pkl","rb")
     mapper=pickle.load(a)
     a.close()
     if district_id not in mapper:
@@ -73,13 +73,18 @@ def DeleteEmailByDistrict():
         email=input("Enter email to delete by: ")
         if email in mapper[district_id]:
             del mapper[district_id][email]
-            a=open("map.pkl","wb")
+            a=open(CONSTANTS.path.value+"/map.pkl","wb")
             pickle.dump(mapper,a)
             a.close()
-            a=open("MapperLog.txt","a")
+            a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
             a.write(f"\n\ndeleted email {email} from district id {district_id}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
         else:
             print("email not present")
 
 
-DeleteEmailByDistrict()
+
+
+# addEntry()
+# RenameDistrict()
+# DeleteDistrict()
+# DeleteEmailByDistrict()

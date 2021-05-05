@@ -1,6 +1,7 @@
 import pickle
 import json
-a=open("map.pkl",'ab')
+from CONSTANTS import CONSTANTS
+a=open(CONSTANTS.path.value+"/map.pkl",'ab')
 mapper = {
     149:{
         'sinha.diptanshu10@gmail.com':{
@@ -25,8 +26,8 @@ mapper = {
 }
 pickle.dump(mapper,a)
 a.close()
-a=open("/home/diptanshu/Desktop/Cowin/map.pkl",'rb')
+a=open(CONSTANTS.path.value+"/map.pkl",'rb')
 print(pickle.load(a))
 a.close()
-a=open("/home/diptanshu/Desktop/Cowin/MapperLog.txt","a")
+a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
 a.write(f"Initizalized mapper \n\n Current mapper: \n {json.dumps(mapper,indent=1)}")

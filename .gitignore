@@ -5,3 +5,4 @@ playground.py
 logs.txt
 MapperLog.txt
 getPassword.py
+__pycache__
