@@ -86,6 +86,6 @@ def DeleteEmailByDistrict():
 
 
 # addEntry()
-RenameDistrict()
+# RenameDistrict()
 # DeleteDistrict()
 # DeleteEmailByDistrict()
