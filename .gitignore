@@ -3,6 +3,7 @@ sendgrid.env
 sendgrid.env
 playground.py
 logs.txt
+map.pkl
 MapperLog.txt
 getPassword.py
 __pycache__/
