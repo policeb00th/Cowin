@@ -1,7 +1,30 @@
+from tabulate import tabulate
 def prettyprint(availableDates):
     for date in availableDates:
-        print(f"\t------------------------Date: {date}-----------------------------\n")
-        print("\tName \t \t \t Vaccine type \t \t Available vaccines\n")
-        for centerDetails in availableDates[date]:
-            print(f"\t{centerDetails[0]}\t \t{centerDetails[1]}\t \t{centerDetails[2]}")
-        print(f"\t---------------------------------------------------------------------\n")
+        print(f"------------------------Date: {date}-----------------------------\n")
+        print("Name \t \t \t Vaccine type \t \t Available vaccines\n")
+        print(tabulate(availableDates[date]))
+        print(f"---------------------------------------------------------------------\n")
+        
+
+
+def prettyreturnAllAge(availableDates):
+    finalval=""
+    for date in availableDates:
+        finalval+=f"""------------------------Date: {date}-----------------------------------------\n
+        
+{tabulate(availableDates[date],headers=["Name","Vaccine type","slots","Age","Paid/Free"],tablefmt='html')}
+        
+---------------------------------------------------------------------------------\n"""
+    return finalval
+        
+
+def prettyreturnByAge(availableDates):
+    finalval=""
+    for date in availableDates:
+        finalval+=f"""------------------------Date: {date}-----------------------------------------\n
+        
+{tabulate(availableDates[date],headers=["Name","Vaccine type","slots","Paid/Free"],tablefmt='html')}
+        
+---------------------------------------------------------------------------------\n"""
+    return finalval
