@@ -11,12 +11,12 @@ def prettyprint(availableDates):
 def prettyreturnAllAge(availableDates):
     finalval=""
     for date in availableDates:
-        finalval+=f"""{tabulate(availableDates[date],headers=["Name","Vaccine type","slots","Age","Paid/Free","date"],tablefmt='html')}\n"""
+        finalval+=f"""{tabulate(availableDates[date],headers=["Name","Address","Vaccine type","slots","Age","Paid/Free","date"],tablefmt='html')}\n"""
     return finalval
         
 
 def prettyreturnByAge(availableDates):
     finalval=""
     for date in availableDates:
-        finalval+=f"""{tabulate(availableDates[date],headers=["Name","Vaccine type","slots","Paid/Free","date"],tablefmt='html')}\n"""
+        finalval+=f"""{tabulate(availableDates[date],headers=["Name","Address","Vaccine type","slots","Paid/Free","date"],tablefmt='html')}\n"""
     return finalval
