@@ -23,14 +23,15 @@ for district in mapper:
         if response.status_code==200:
             bothAgeCenters=getAllCenters(response)
             if bothAgeCenters!={}:
-                data=prettyreturnAllAge(bothAgeCenters)
-                bothdata['data']+=data
+                if bothList != set():
+                    data=prettyreturnAllAge(bothAgeCenters)
+                    bothdata['data']+=data
                 below45AgeCenters=getAgeBasedCenters(response,18)
                 above45AgeCenters=getAgeBasedCenters(response,45)
-                if below45AgeCenters!={}:
+                if below45AgeCenters!={} and below45List!= set():
                     data=prettyreturnByAge(below45AgeCenters)
                     below45data['data']+=data
-                if above45AgeCenters!={}:
+                if above45AgeCenters!={} and above45List!= set():
                     data=prettyreturnByAge(above45AgeCenters)
                     above45data['data']+=data
         else:
