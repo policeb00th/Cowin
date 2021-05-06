@@ -1,5 +1,4 @@
 import yagmail
-from getPassword import getpwd
 import time
 from CONSTANTS import CONSTANTS
 email,password=CONSTANTS.email.value,CONSTANTS.password.value

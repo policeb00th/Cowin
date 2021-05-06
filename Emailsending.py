@@ -10,11 +10,11 @@ from outputPrettifier import prettyreturnAllAge,prettyreturnByAge
 from datetime import timedelta
 from Emailresponsefilter import getAgeBasedCenters,getAllCenters
 mapper=DistrictMapper.getMapper()
-today = date.today()
 num_weeks=5
 
 print(f"program started at time {datetime.now()}\n--------------------------------------")
 for district in mapper:
+    today = date.today()
     below45List={email for (email,details) in mapper[district].items() if details['age']==18 and details['age_based']==1}
     above45List={email for (email,details) in mapper[district].items() if details['age']==45 and details['age_based']==1}
     bothList={email for (email,details) in mapper[district].items() if details['age_based']==0}
@@ -56,4 +56,5 @@ for district in mapper:
             print(f"mail sent for above45 at time {datetime.now()} containing {len(above45List)} recipients for district {district}\n")
     else:
         print(f"No data against district ID {district} for next 5 weeks")            
+
 print(f"program ended at time {datetime.now()}")
