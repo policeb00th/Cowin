@@ -1,10 +1,45 @@
 import pickle
 import re
 import json
+import pandas as pd
 from CONSTANTS import CONSTANTS
 from ageFiltered import getAgeGroup
 regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$' 
-def addEntry():
+
+def loadData():
+    df = pd.read_csv(CONSTANTS.path.value+'/data.csv')
+    return df
+
+
+# Change New
+def getValues(df, i):
+    district = int(df['district_id'][i])
+    email = df['email_id'][i]
+    age = int(df['age_type'][i])
+    return district, email, age
+
+def addEntryFromCSV(district_id, email_id, age_based):
+    if re.search(regex, email_id):
+        if age_based == 0:
+            age = 0
+        else:
+            age = getAgeGroup(age_based)
+            age_based = 1
+        a = open(CONSTANTS.path.value + "/map.pkl", "rb")
+        mapper = pickle.load(a)
+        a.close()
+        if district_id not in mapper:
+            mapper[district_id] = {email_id: {"age_based": age_based, "age": age, "paid_necessary": 0}}
+        else:
+            mapper[district_id][email_id] = {"age_based": age_based, "age": age, "paid_necessary": 0}
+
+        a = open(CONSTANTS.path.value + "/map.pkl", "wb")
+        pickle.dump(mapper, a)
+        a.close()
+        a = open(CONSTANTS.path.value + "/MapperLog.txt", "a")
+        a.write(f"\n\nAdded district {district_id}, Email {email_id} with age {age} and aged_based {age_based}\n\n Current mapper: \n {json.dumps(mapper, indent=1)}")
+
+def addEntryManually():
     district_id=int(input("Enter district ID: "))
     email=input("enter email address: ")
     if (re.search(regex,email)):
@@ -82,10 +117,23 @@ def DeleteEmailByDistrict():
         else:
             print("email not present")
 
+def loopThrough(df):
+    for i in range(0, len(df)):
+        district, email, age = getValues(df, i)
+        # print(district, email, age)
+        district = int(district)
+        age = int(age)
+        addEntryFromCSV(district, email, age)
 
+def AddFromCSV():
+    data = loadData()
+    loopThrough(data)
 
-
+# for i in range(0,33):
+#     print(f"entry number {i+1}")
+#     addEntry()
+#  RenameDistrict()
+#  DeleteDistrict()
+#  DeleteEmailByDistrict()
 # addEntry()
-RenameDistrict()
-# DeleteDistrict()
-# DeleteEmailByDistrict()
+# AddFromCSV()
