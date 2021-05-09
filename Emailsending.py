@@ -3,7 +3,7 @@ from getListofCenters import getListOfCenters
 from getFormattedDate import getDate
 from datetime import date
 import time
-from emailFunctions import sendMail
+from emailFunctions import sendMail,sendMailEE
 import requests
 from datetime import datetime
 from outputPrettifier import prettyreturnAllAge,prettyreturnByAge
@@ -46,13 +46,13 @@ for district in mapper:
         today = today+timedelta(weeks=1)
     if(c!=0):
         if bothdata['data']!="":
-            sendMail(bothList,bothdata['data'])
+            sendMailEE(bothList,bothdata['data'])
             print(f"mail sent for bothList at time {datetime.now()} containing {len(bothList)} recipients for district {district}\n")   
         if below45data['data']!="":
-            sendMail(below45List,below45data['data'])
+            sendMailEE(below45List,below45data['data'])
             print(f"mail sent for below45 at time {datetime.now()} containing {len(below45List)} recipients for district {district}\n")       
         if above45data['data']!="":
-            sendMail(above45List,above45data["data"])
+            sendMailEE(above45List,above45data["data"])
             print(f"mail sent for above45 at time {datetime.now()} containing {len(above45List)} recipients for district {district}\n")
     else:
         print(f"No data against district ID {district} for next 5 weeks")            

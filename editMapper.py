@@ -2,6 +2,7 @@ import pickle
 import re
 import json
 import pandas as pd
+from datetime import datetime 
 from CONSTANTS import CONSTANTS
 from ageFiltered import getAgeGroup
 regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$' 
@@ -37,7 +38,7 @@ def addEntryFromCSV(district_id, email_id, age_based):
         pickle.dump(mapper, a)
         a.close()
         a = open(CONSTANTS.path.value + "/MapperLog.txt", "a")
-        a.write(f"\n\nAdded district {district_id}, Email {email_id} with age {age} and aged_based {age_based}\n\n Current mapper: \n {json.dumps(mapper, indent=1)}")
+        a.write(f"\n\nAdded district {district_id}, Email {email_id} with age {age} and aged_based {age_based} at time {datetime.now()}\n\n Current mapper: \n {json.dumps(mapper, indent=1)}")
 
 def addEntryManually():
     district_id=int(input("Enter district ID: "))
@@ -129,6 +130,27 @@ def AddFromCSV():
     data = loadData()
     loopThrough(data)
 
+def deleteAllEmailOccurences():
+    a=open(CONSTANTS.path.value+"/map.pkl","rb")
+    mapper=pickle.load(a)
+    a.close()
+    found=0
+    email=input("enter email: ")
+    for district in mapper:
+        if email in mapper[district]:
+            del mapper[district][email]
+            a=open(CONSTANTS.path.value+"/map.pkl","wb")
+            pickle.dump(mapper,a)
+            a.close()
+            a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
+            a.write(f"\n\ndeleted email {email} from district id {district}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
+            found=1
+        break
+    if found==0:
+        print("No email found")
+    else:
+        print("email deleted")
+    
 # for i in range(0,33):
 #     print(f"entry number {i+1}")
 #     addEntry()
@@ -136,4 +158,5 @@ def AddFromCSV():
 #  DeleteDistrict()
 #  DeleteEmailByDistrict()
 # addEntry()
-# AddFromCSV()
+AddFromCSV()
+# deleteAllEmailOccurences()
