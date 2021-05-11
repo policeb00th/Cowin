@@ -13,4 +13,4 @@ def sendMail(adresses,data):
 
 
 def sendMailEE(address,data):
-    print(Email.Send(subject="Trial",EEfrom="diptanshu@c4projects.tech",sender="diptanshu@c4projects.tech",to=address,bodyText="Trial",bodyHtml=data))
+    print(Email.Send(subject="Cowin Slots!!",EEfrom="diptanshu@c4projects.tech",sender="diptanshu@c4projects.tech",to=address,bodyText="Open Cowin Slots!",bodyHtml=data))

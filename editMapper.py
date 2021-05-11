@@ -13,6 +13,10 @@ def loadData():
 
 
 # Change New
+
+def getEmail(df ,i):
+    email=df['to'][i]
+    return email
 def getValues(df, i):
     district = int(df['district_id'][i])
     email = df['email_id'][i]
@@ -129,7 +133,14 @@ def loopThrough(df):
 def AddFromCSV():
     data = loadData()
     loopThrough(data)
-
+    
+def deleteFromCSV():
+    df = pd.read_csv(CONSTANTS.path.value+'/delete.csv')
+    for i in range(0, len(df)):
+        email=getEmail(df,i)
+        deleteAllEmailOccurencesCSV(email)
+        
+    
 def deleteAllEmailOccurences():
     a=open(CONSTANTS.path.value+"/map.pkl","rb")
     mapper=pickle.load(a)
@@ -138,6 +149,7 @@ def deleteAllEmailOccurences():
     email=input("enter email: ")
     for district in mapper:
         if email in mapper[district]:
+            print(True)
             del mapper[district][email]
             a=open(CONSTANTS.path.value+"/map.pkl","wb")
             pickle.dump(mapper,a)
@@ -145,7 +157,31 @@ def deleteAllEmailOccurences():
             a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
             a.write(f"\n\ndeleted email {email} from district id {district}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
             found=1
-        break
+        else:
+            pass
+    if found==0:
+        print("No email found")
+    else:
+        print("email deleted")
+
+
+def deleteAllEmailOccurencesCSV(email):
+    a=open(CONSTANTS.path.value+"/map.pkl","rb")
+    mapper=pickle.load(a)
+    a.close()
+    found=0
+    for district in mapper:
+        if email in mapper[district]:
+            print(True)
+            del mapper[district][email]
+            a=open(CONSTANTS.path.value+"/map.pkl","wb")
+            pickle.dump(mapper,a)
+            a.close()
+            a=open(CONSTANTS.path.value+"/MapperLog.txt","a")
+            a.write(f"\n\ndeleted email {email} from district id {district}\n\n Current mapper: \n {json.dumps(mapper,indent=1)}")
+            found=1
+        else:
+            pass
     if found==0:
         print("No email found")
     else:
@@ -157,6 +193,7 @@ def deleteAllEmailOccurences():
 #  RenameDistrict()
 #  DeleteDistrict()
 #  DeleteEmailByDistrict()
-# addEntry()
-AddFromCSV()
+# addEntryManually()
+# AddFromCSV()
 # deleteAllEmailOccurences()
+deleteFromCSV()
